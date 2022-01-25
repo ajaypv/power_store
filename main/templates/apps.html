@@ -1,0 +1,51 @@
+{% block content %}
+{% load static%}
+<div class = 'gre'>
+  <h1>POWER STORE APPS</h1>
+</div>
+<div>
+  <h3>welcome {{user.username}}</h3>
+</div>
+
+<link href="{% static 'apps1.css' %}" rel="stylesheet">
+<!-- 
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet"> -->
+
+{% if user.is_authenticated %}
+<div>
+  <a href="account/logout">logout</a>
+</div>
+<section class="hero-section">
+  <div class="card-grid">
+    <a class="card" href="{%url 'rates' %}">
+      <div class="card__background" style="background-image: url(https://sf-tk-sg.ibytedtos.com/obj/tiktok-web-sg/tt-sg-article-cover-7dc2e3edac2936fab0a719fbc223a2a1.gif)"></div>
+      <div class="card__content">
+        <p class="card__category">BY POWER STORE</p>
+        <h3 class="card__heading">RATES APP</h3>
+      </div>
+    </a>
+    <a class="card" href="{% url 'code_page'%}">
+      <div class="card__background" style="background-image: url(https://media4.giphy.com/media/p4NLw3I4U0idi/giphy.gif?cid=ecf05e470vhy70hg41kp0ko8yy05pgco7nsmv0cnggsjicmq&rid=giphy.gif&ct=g)"></div>
+      <div class="card__content">
+        <p class="card__category">BY POWER STORE</p>
+        <h3 class="card__heading">CODE APP</h3>
+      </div>
+    </a>
+    <a class="card" href="note">
+      <div class="card__background" style="background-image: url(https://media0.giphy.com/media/K7sTuctEdHBSv2dQDE/200w.webp?cid=ecf05e479o0gwj4493zr5b78h1ogjqf33xd1ttfpo58c2ojs&rid=200w.webp&ct=g)"></div>
+      <div class="card__content">
+        <p class="card__category">power store</p>
+        <h3 class="card__heading">POWER NOTE</h3>
+      </div>
+    </li>
+    
+  <div>
+</section>
+ {%else%}
+<html>login or sign up to access the power store
+   apps <a href="account/login"><h1>login</h1></a>
+    <a href="account/signup"><h1>signup</h1></a>
+</html>
+{% endif %}
+
+{% endblock %}

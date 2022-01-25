@@ -1,0 +1,44 @@
+{% block content %}
+
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>code_app</title>
+
+</head>
+<body>
+<div>
+    <h1><a href="{% url 'apps'%}"><h1>power store</h1> </a></h1>
+    <h1>
+        code app
+    </h1>
+    <h3><a href="{% url 'codeapp'%}">share a code</a></h3>
+</div>  
+<div class="container">
+  {% for code in codes %} 
+     <h3>user_name -->{{code.creater_name.username}}</h4>
+     <h1>program name -->{{code.app_name}}</h1>
+    <h3>discrption</h3>
+     <textarea name="" id="" cols="30" rows="3">{{code.description}}</textarea></h4>
+     <div>
+
+     </div>
+     <h2>code</h2>
+     <textarea name="" id="" cols="90" rows="19">{{code.code}}</textarea></h4>
+     <hr>
+     <br>
+     {%endfor %}
+</div>
+
+</body>
+</html>
+
+
+
+{% endblock %}

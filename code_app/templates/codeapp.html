@@ -1,0 +1,54 @@
+{% block content %}
+
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div>
+  <a href="{% url 'code_page'%}"><h2>back to code app page</h2></a>
+    <h1>
+        {{user.username}}
+    </h1>
+</div>  
+<div>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <!-- {{form.as_p}} -->
+        <div>
+            <label for="pro_lang">enter the programing language</label>
+            <input type="text" name="pro_lang" id="pro_lang" placeholder="Enter">
+            <label for="program_name ">program name </label>
+            <input type="text" name="program_name" id="program_name" placeholder="program_name">
+         
+        
+        </div>
+        <div>
+        <label for="description">Enter your code description</label>
+       <textarea id="description" name="description" rows="4" cols="80">
+       </textarea>
+        </div>
+        <label for="code">type your code</label>
+        <textarea name="code" id="code" cols="90" rows="19"></textarea>
+        <input type="submit" value='submit' />
+
+    </form>
+
+        
+        
+   
+</div>
+
+</body>
+</html>
+
+
+
+{% endblock %}

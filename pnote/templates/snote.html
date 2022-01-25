@@ -1,0 +1,36 @@
+{% block content%}
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="{% url 'note' %}">back to note page</a>
+    Hello {{user.username}}
+<form action="" method="POST">
+    {% csrf_token %}
+    <h3>enter a your note Book Name</h3>
+   <label for="note_name"></label>
+   <input type="text" name = "note_name" placeholder = "Note_Book Name">
+   <h3>write about your note book</h3>
+   <textarea name="anote" id="anote" cols="40" rows="5"></textarea>
+   <h3>paste the google docs  embedded  link below</h3>
+   <textarea name="link" id="link" cols="70" rows="4"></textarea>
+   <input type="submit">
+   
+</form>
+   <hr>
+  <h4>reference image to find the link to share</h4> 
+  <img src="https://support.strikingly.com/hc/en-us/article_attachments/202471682/share8.png" alt="">
+   <img src="http://4.bp.blogspot.com/-Hfi0MQNIGdc/U9r4D0RfW-I/AAAAAAAAouM/lwUwRrqU73s/s1600/1.png" alt="">
+</body>
+</html>
+
+
+
+{% endblock  %}

@@ -1,0 +1,48 @@
+{% block content %}
+
+<h1>Hi</h1>
+<h1> {{user.username}}</h1>
+<h2>WELCOME TO POWER STORE</h2>
+
+
+<img src="{{id}}" alt="">
+
+<div>
+    <!-- <form method="POST" enctype="text/plain	">
+        {% csrf_token %}
+  
+        <input type="file" name="profile_photo" />
+        <button type = "submit"> Upload Profile</button>
+        
+    </form> -->
+{% if id == Null%}
+
+
+    <h2>Please upload your profile photo  or gif photo</h2>
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="document">
+   <input type="submit">
+  </form>
+  {% if url %}
+    <p>Uploaded file: <a href="{{ url }}">{{ url }}</a></p>
+  {% endif %}
+</div>
+
+{%else %}
+
+<h1>male or female</h1>
+<div>
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value='submit' />
+    </form>
+</div>
+
+{%endif%}
+
+
+
+{% endblock %}

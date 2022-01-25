@@ -1,0 +1,40 @@
+{% block content %}
+
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div>
+  <a href="{% url 'apps'%}"><h4>back to main page</h4></a>
+  <h2>share Your NOTE which can help other to add <a href="{% url 'snote' %}">*share*</a> </h2> 
+
+    <h3>
+        {{user.username}} welome to power_note
+    </h3>
+</div>  
+<div>
+    {% for note in notes%}
+    
+    <a href="{% url 'dnote' note.id %}">
+    <h4>{{note.notebook}} shared by -{{note.creater_name.username}}</h4>
+   <textarea name="" id="" cols="35" rows="3">{{note.about}}</textarea>
+   <h5>{{note.like_count}} stars</h5>
+   <hr>
+</a>
+   {% endfor %}
+</div>
+
+</body>
+</html>
+
+
+
+{% endblock %}

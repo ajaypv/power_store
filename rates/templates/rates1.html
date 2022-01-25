@@ -1,0 +1,151 @@
+{% block content %}
+
+{% load static %}
+
+<link href="{% static 'styles.css' %}" rel="stylesheet">
+
+<!-- <link href="{% static 'style12.css' %}" rel="stylesheet"> -->
+
+<div>
+  <a href=""></a>
+  <a href="{% url 'apps'%}">
+    <h3>
+      POWER STORE
+    </h3>
+     
+    
+  </a>
+</div>
+<div>
+  <h2><a href="{% url 'profile'%}">upload your photes</a></hh2>
+</div> 
+<h1>
+    <span>R</span>
+    <span>A</span>
+    <span>T</span>
+    <span>E</span>
+    <span>S</span>
+    
+  </br>
+    <span>A</span>
+    <span>P</span>
+    <span>P</span>
+  </h1>
+
+
+<section class="image-column-grid viewport-height">
+<div class="columns" data-scroll-container="">
+  <div class="column column-reverse">
+    {% for j in img%}
+      <figure class="column__item">
+          <div class="column__item-imgwrap">
+              <img src="{{j.img}}" alt="" title="" height="" width="" />
+              by @{{j.user.username}}     
+          </div>
+          <div>
+            <div class='likesect'>
+                <form action="{%url 'rates' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="post" value="{{j.id}}"> 
+                    <button class="btn btn-danger" id="heart2" type="submit"><i
+                        class="fas fa-heart"> {{j.likes}} starts</i></button>
+                </form>
+
+            </div>
+          </div>
+          <figcaption class="column__item-caption"> <span>#{{j.caption}}</span> </figcaption>
+      </figure>
+      {%endfor%}
+  </div>
+  <div class="column">
+    {% for j in img2%}
+    <figure class="column__item">
+        <div class="column__item-imgwrap">
+            <img src="{{j.img}}" alt="" title="" height="" width="" /> 
+            @ by {{j.user.username}}        
+        </div>
+        <div>
+          <div class='likesect'>
+              <form action="{%url 'rates' %}" method="POST">
+                  {% csrf_token %}
+                  <input type="hidden" name="post" value="{{j.id}}"> 
+                  <button class="btn btn-danger" id="heart2" type="submit"><i
+                      class="fas fa-heart"> {{j.likes}} likes</i></button>
+              </form>
+
+          </div>
+        </div>
+        <figcaption class="column__item-caption"> <span>#{{j.caption}}</span> </figcaption>
+    </figure>
+    {%endfor%}
+  </div>
+  <div class="column column-reverse">
+    {% for j in img3%}
+    <figure class="column__item">
+        <div class="column__item-imgwrap">
+            <img src="{{j.img}}" alt="" title="" height="" width="" />    
+            @ by {{j.user.username}}     
+        </div>
+        <div>
+          <div class='likesect'>
+              <form action="{%url 'rates' %}" method="POST">
+                  {% csrf_token %}
+                  <input type="hidden" name="post" value="{{j.id}}"> 
+                  <button class="btn btn-danger" id="heart2" type="submit"><i
+                      class="fas fa-heart"> {{j.likes}} likes</i></button>
+              </form>
+
+          </div>
+        </div>
+        <figcaption class="column__item-caption"> <span>#{{j.caption}}</span> </figcaption>
+    </figure>
+    {%endfor%}
+      
+  </div>
+</div>
+<script src="{% static 'rates.js' %}"></script>
+
+<script>
+  import {ScrollTimeline} from 'https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js';
+
+
+// Fallback for browsers that don't support CSS ScrollTimeline
+if (!CSS.supports("animation-timeline: foo")) {
+    // Replace warning box with info box
+    document.querySelector(".warning").style.display = "none";
+    document.querySelector(".info").style.display = "block";
+
+    // As we're about to shift content out of .columns, we need it to hide its overflow
+    document.querySelector(".columns").style.overflowY = "hidden";
+
+    // Set up timeline
+    const timeline = new ScrollTimeline({
+        scrollSource: document.documentElement,
+        timeRange: 1,
+        fill: "both"
+    });
+
+    // Loop all eligible columns
+    document.querySelectorAll(".column-reverse").forEach(($column) => {
+        // Flip item order in reverse columns
+        $column.style.flexDirection = "column-reverse";
+
+        // Hook Animation
+        $column.animate(
+            {
+                transform: [
+                    "translateY(calc(-100% + 100vh))",
+                    "translateY(calc(100% - 100vh))"
+                ]
+            },
+            {
+                duration: 1,
+                fill: "both",
+                timeline
+            }
+        );
+    });
+}
+
+</script>
+{% endblock %}
